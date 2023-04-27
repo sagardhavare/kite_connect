@@ -2,11 +2,11 @@ defmodule KiteConnect.State do
   use GenServer
 
   ## API
-  def start_link do
+  def start_link(_args \\ []) do
     state = %{
       api_key: nil,
       api_secret: nil,
-      access_token: nil,
+      access_token: nil
     }
 
     GenServer.start_link(__MODULE__, state, name: __MODULE__)
