@@ -9,7 +9,7 @@ defmodule KiteConnect.MixProject do
       start_permanent: Mix.env() == :prod,
       description: "Elixir module for the Zerodha Kite Connect API",
       package: package(),
-      deps: deps(),
+      deps: deps()
     ]
   end
 
@@ -21,13 +21,15 @@ defmodule KiteConnect.MixProject do
       links: %{"GitHub" => "https://github.com/arcofdescent/kite_connect"}
     ]
   end
-  
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:httpoison, "~> 1.3"},
       {:poison, "~> 3.0"},
       {:ex_doc, "~> 0.19"},
+      {:nimble_csv, "~> 1.2"},
+      {:exconstructor, "~> 1.2"}
     ]
   end
 end

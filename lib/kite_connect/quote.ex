@@ -7,7 +7,7 @@ defmodule KiteConnect.Quote do
   Get last traded price of instrument(s).
   Instruments can be provided as exchange:tradingsymbol combination
   or use instrument token
-  
+
   KiteConnect.Quote.ltp("NSE:INFY")
   """
   def ltp(instruments) when is_list(instruments) do
@@ -21,7 +21,7 @@ defmodule KiteConnect.Quote do
   def ltp(instrument) when is_integer(instrument) do
     ltp(Integer.to_string(instrument))
   end
-        
+
   def ltp(instrument) when is_binary(instrument) do
     url = KiteConnect.gen_url("quote.ltp", instrument)
     headers = KiteConnect.gen_headers()
@@ -35,7 +35,7 @@ defmodule KiteConnect.Quote do
   def market_quote(instrument) when is_integer(instrument) do
     market_quote(Integer.to_string(instrument))
   end
-        
+
   def market_quote(instrument) when is_binary(instrument) do
     url = KiteConnect.gen_url("quote.market", instrument)
     headers = KiteConnect.gen_headers()
@@ -48,14 +48,16 @@ defmodule KiteConnect.Quote do
   def get_bid_ask(instrument) when is_integer(instrument) do
     get_bid_ask(Integer.to_string(instrument))
   end
-        
+
   def get_bid_ask(instrument) when is_binary(instrument) do
     body = market_quote(instrument)
     depth = body["data"][instrument]["depth"]
 
     {
-      :bid, Enum.at(depth["buy"], 0)["price"], 
-      :ask, Enum.at(depth["sell"], 0)["price"]
+      :bid,
+      Enum.at(depth["buy"], 0)["price"],
+      :ask,
+      Enum.at(depth["sell"], 0)["price"]
     }
   end
 end
