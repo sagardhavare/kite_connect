@@ -29,7 +29,8 @@ defmodule KiteConnect.MixProject do
       {:poison, "~> 3.0"},
       {:ex_doc, "~> 0.19"},
       {:nimble_csv, "~> 1.2"},
-      {:exconstructor, "~> 1.2"}
+      {:exconstructor, "~> 1.2"},
+      {:timex, "~> 3.7"}
     ]
   end
 end
